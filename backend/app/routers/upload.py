@@ -70,3 +70,15 @@ async def upload_file(file: UploadFile = File(...), expiration_hours: int = Form
         "file_name": file.filename,
         "file_size": file_size,
     }
+
+@router.get("/api/recent")
+async def get_recent_uploads(limit: int = 10):
+    metadata_service = TableMetadataService()
+    results = metadata_service.get_recent_uploads(limit=limit)
+    return results
+
+@router.get("/api/expiring")
+async def get_expiring_uploads(limit: int = 10):
+    metadata_service = TableMetadataService()
+    results = metadata_service.get_expiring_uploads(limit=limit)
+    return results

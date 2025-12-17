@@ -81,4 +81,32 @@ A web application that allows users to upload files, receive a shareable link, a
 - **Docker** - Containerization
 - **GitHub Actions** - CI/CD
 
----
+## Development Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/michael-duren/fast-transfer
+   ```
+2. Create a virtual environment and install dependencies:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   pip install -r requirements.txt
+   ```
+3. Set up Azure resources (Blob Storage, App Service, Functions, Table/Cosmos DB
+   using the Azure Portal or Azure CLI.
+
+4. Configure environment variables for connection strings and settings.
+   Check `.env.example` for reference.
+
+5. Run the FastAPI backend:
+   ```bash
+    uvicorn app.main:app --reload
+   ```
+6. Start the React frontend:
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+7. Access the application at `http://localhost:5173`.
